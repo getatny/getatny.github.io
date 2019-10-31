@@ -33,6 +33,8 @@ menu:
   #   card: article-card
   Home: /
   Archive: /archives
+  Category: /categories
+  Tag: /tags
   About: /about
 
 # Specific default categories or tags of home page.
