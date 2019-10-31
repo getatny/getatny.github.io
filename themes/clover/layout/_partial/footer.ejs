@@ -9,3 +9,14 @@
   <% } %>
   <span class="copyright"><%= theme.copyright %></span>
 </footer>
+
+<%- js('highlight/pretty') %>
+<%- css('highlight/tomorrow-night-eighties.min') %>
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.querySelectorAll('pre').forEach((pre) => {
+            pre.classList.add('prettyprint', '<%- config.highlight.line_number ? 'linenums' : '' %>')
+        });
+        prettyPrint();
+    });
+</script>

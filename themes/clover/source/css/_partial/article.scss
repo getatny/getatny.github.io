@@ -24,35 +24,30 @@ $brand-color: #f0534e;
       line-height: 40px;
       margin-bottom: 15px;
     }
-    
+
     p {
       font-size: 16px;
       line-height: 30px;
       margin-bottom: 15px;
     }
 
-    pre, .highlight {
-      overflow: auto;;
-      padding: 0;
-      color: #333;
-      font-size: 13px;
-      background: #f8f8f8;
-      .gutter {
-        text-align: right;
-        pre {
-          background-color: #f0f0f0;
-          padding: 0 10px;
+    pre {
+      padding: 16px;
+      margin-bottom: 15px;
+      ol {
+        margin: 0;
+        margin-left: 2rem!important;
+        > li {
+          padding-left: unset!important;
+          position: unset!important;
+          ::before {
+            content: ''
+          }
         }
       }
-      .code {
-        padding: 0 10px;
-      }
-    }
-    .highlight {
-      margin-bottom: 15px;
     }
 
-    ul, ol {
+    ul, ol:not(.linenums) {
       margin: 15px 0;
       margin-left:15px;
       > li {
@@ -141,7 +136,7 @@ $brand-color: #f0534e;
 
       td { border-bottom-width: 1px; }
     }
-    
+
     * {
       max-width: 100%;
     }

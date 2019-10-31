@@ -2,7 +2,10 @@
 nav:
   title: "Getatny"
 
-favicon: ""
+favicon: "/img/getatny_favicon.ico"
+
+highlight:
+  line_number: true
 
 # Custom background
 background:
