@@ -1,0 +1,21 @@
+sudo: false
+language: node_js
+node_js:
+  - 10 # use nodejs v10 LTS
+cache: npm
+branches:
+  only:
+    - source # build master branch only
+script:
+  - hexo generate # generate static files
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "getatny"
+  - git config user.email "ga@getatny.com"
+  - git add .
+  - git commit -m "Update blog"
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+env:
+ global:
+   - GH_REF: github.com/getatny/getatny.github.io.git
