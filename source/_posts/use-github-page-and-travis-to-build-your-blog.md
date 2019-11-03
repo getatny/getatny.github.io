@@ -48,4 +48,38 @@ Hexo-cli安装成功之后，便可以在你工作的文件夹下创建`hexo`文
 
 ### Travis
 
-简单来说，Travis会监控你配置有.travis.yml的branch，每当这个branch更改的时候，它都会根据你的配置文件自动的将你branch的东西build出来。默认情况下，如果是master branch，它会将build出来的静态网页push到`gh-pages`branch下，如果你的github page是组织页面类型，那你可以在settings中切换你的默认显示branch为`gh-pages`。
+简单来说，Travis会监控你配置有.travis.yml的branch，每当这个branch有资源更改的时候，它都会根据你的配置文件自动的将你branch的东西build出来。怎么注册使用Travis，网上的教程很多我就不再啰嗦了，请自行百度。默认情况下，如果监控的是master branch，它会将build出来的静态网页push到`gh-pages`branch下，这时如果你的github page是组织页面类型，那你可以在settings中切换你的默认显示branch为`gh-pages`。
+
+### 个人页面类型怎么配置Travis
+
+上面说了，默认情况下Travis会将build出来的静态文件push到`gh-pages` branch下，你需要将默认的展示branch切换为该branch，github page才能展示正确的内容。可是这里有一个问题是，个人类型的页面是不支持切换展示branch的，只能展示master branch下的内容。
+
+![github page settings](https://s2.ax1x.com/2019/11/03/KjtfJI.png)
+
+解决该问题的办法其实也很简单，Travis就是一个帮你进行自动部署的工具，怎么去部署这些资源都是可控的。我们可以通过在Travis的配置文件中增加以下内容，让它从source（你也可以修改为其他branch）branch中build静态文件，并将这些文件push到master branch上。
+
+```yaml
+sudo: false
+language: node_js
+node_js:
+  - 10 # use nodejs v10 LTS
+cache: npm
+branches:
+  only:
+    - source # build source branch
+script:
+  - hexo generate # 使用hexo cli构建静态网页
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "getatny" # 你的github用户名
+  - git config user.email "ga@getatny.com" # github邮箱
+  - git add .
+  - git commit -m "Update blog" # commit描述，可自行修改
+  - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+env:
+ global:
+   - GH_REF: 你的Repo链接
+```
+
+这样，clone该Repo之后，你就可以在source branch下进行你的修改，然后push到github，Travis就能自动将你的修改进行部署。至此，Github page + Hexo + Travis的博客就配置完成了，可以开始创作你的博客了！
