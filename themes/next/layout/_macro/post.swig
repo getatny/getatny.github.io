@@ -6,7 +6,7 @@
   {% if post_extra_class > 0 %}
     {% set post_class = post_class + ' ' + post_extra_class | default('') %}
   {% endif %}
-  {% if post.sticky > 0 %}
+  {% if post.top > 0 %}
     {% set post_class = post_class + ' ' + 'post-sticky' %}
   {% endif %}
 
@@ -35,8 +35,8 @@
           <{% if theme.seo %}h2{% else %}h1{% endif %} class="post-title{% if post.direction && post.direction.toLowerCase() === 'rtl' %} rtl{% endif %}" itemprop="name headline">{#
           #}{# Link posts #}{#
           #}{% if post.link %}
-              {% if post.sticky > 0 %}
-                {{ post.sticky }}
+              {% if post.top > 0 %}
+                {{ post.top }}
                 <span class="post-sticky-flag" title="{{ __('post.sticky') }}">
                   <i class="fa fa-thumb-tack"></i>
                 </span>
@@ -47,7 +47,7 @@
               </a>
             {% else %}{#
             #}{% if is_index %}
-                {% if post.sticky > 0 %}
+                {% if post.top > 0 %}
                   <span class="post-sticky-flag" title="{{ __('post.sticky') }}">
                     <i class="fa fa-thumb-tack"></i>
                   </span>
