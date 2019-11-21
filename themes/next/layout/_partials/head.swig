@@ -146,6 +146,9 @@
       indexName: '{{ theme.algolia.indexName }}',
       hits: {{ theme.algolia_search.hits | json_encode }},
       labels: {{ theme.algolia_search.labels | json_encode }}
+    },
+    emojis: {
+      className: '{{ config.githubEmojis.className | default('github-emoji') }}'
     }
   };
 </script>

@@ -1,6 +1,15 @@
 //
 // Variables
 // =================================================
+// Github emojis class name
+// --------------------------------------------------
+
+get_emoji_class() {
+  emoji_class = hexo-site-config('githubEmojis.className')
+  return emoji_class ? emoji_class : 'github-emoji'
+}
+
+$github-emojis-class-name   = get_emoji_class()
 
 
 
