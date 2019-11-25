@@ -12,8 +12,10 @@
         repo: '{{theme.gitalk.repo}}',
         owner: '{{theme.gitalk.owner}}',
         admin: ['{{theme.gitalk.admin}}'],
-        id: location.pathname,      // Ensure uniqueness and length less than 50
-        distractionFreeMode: {{theme.gitalk.distraction_free_mode}}  // Facebook-like distraction free mode
+        id: location.pathname.split('/')[4],
+        distractionFreeMode: {{theme.gitalk.distraction_free_mode}},
+        labels: ['{{theme.gitalk.labels}}'],
+        createIssueManually: {{theme.gitalk.create_issue_manually}}
       })
 
       gitalk.render('gitalk-container')

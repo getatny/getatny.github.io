@@ -2,6 +2,7 @@
 layout: about
 title: about
 date: 2019-10-31 21:24:11
+comments: false
 ---
 ## 关于我
 

@@ -423,6 +423,8 @@ gitalk:
   owner: getatny
   admin: getatny
   distraction_free_mode: true
+  labels: Blog Comments
+  create_issue_manually: true
 
 # Baidu Share
 # Available value:
