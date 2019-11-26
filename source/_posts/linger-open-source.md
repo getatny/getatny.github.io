@@ -5,7 +5,7 @@ tags: [ 'mini-program', 'open source' ]
 categories: 
 - Project
 ---
-> 我没有不惑，只求在回望中结果，谁为我们生造矛盾这么多？
+> 我没有不惑，只求在回望中结果，谁为我们生造矛盾这么多？ ---- 《弥留》
 
 <!-- more -->
 
@@ -21,7 +21,7 @@ Linger的意思是停留，但叫Linger不是我的本意。在写这个小程�
 
 ## 关于小程序设计
 
-我是有学前端啦，但是页面设计真的烂到没话说，这次小程序的设计也是和前作水平旗鼓相当。尽管我已经很克制的希望做出来的小程序不要和前作太过相似，但多少还是有点影子。不过好在我心态够好，直接坦然接受了 {% github_emoji simple_smile %}
+我是有学前端啦，但是页面设计真的烂到没话说，这次小程序的设计也是和前作水平旗鼓相当。尽管我已经很克制的希望做出来的小程序不要和前作太过相似，但多少还是有点影子。不过好在我心态够好，直接坦然接受了 {% github_emoji frowning %}
 
 ## 程序截图
 
@@ -35,7 +35,7 @@ Linger的意思是停留，但叫Linger不是我的本意。在写这个小程�
 
 ## 怎么运行？
 
-克隆本项目，执行：
+克隆本项目：[https://github.com/getatny/linger](https://github.com/getatny/linger)，执行：
 
 ```bash
 npm install && npm run dev:weapp
