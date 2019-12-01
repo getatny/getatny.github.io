@@ -10,11 +10,11 @@ no-emoji: true
 
 你之前听过说“代数效应”（Algebraic Effects）吗？
 
-<!-- more -->
-
 我之前曾尝试着去搞清楚什么是代数效应以及我们为什么需要关注它，但是失败了。我找到了一些[pdf](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/08/algeff-tr-2016-v2.pdf)，但是这些东反而让我更迷惑了。（有一些学校的pdf看的我想睡觉）
 
 但是我的同事 Sebastian 一直推荐把它作为在开发React时的心智模型。（Sebastian在React团队工作并且想出了很多ideas，包括Hooks和Suspense）从某些点来说，它已经变成了React团队内的一个梗，我们很多的对话都会以下图结束：
+
+<!-- more -->
 
 <div align="center">
 

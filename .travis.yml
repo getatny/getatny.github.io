@@ -9,11 +9,13 @@ branches:
 script:
   - hexo generate # generate static files
 after_script:
+  - git config user.name "Matthew Wang"
+  - git config user.email "wangmaozhu@foxmail.com"
+  - git remote add coding "https://${CODING_TOKEN}@e.coding.net/matthew-wang/matt-coding.git"
+  - git push coding HEAD:source --force
   - cd ./public
   - git init
   - echo "blog.getatny.com" > CNAME
-  - git config user.name "getatny"
-  - git config user.email "ga@getatny.com"
   - git add .
   - git commit -m "Update blog"
   - git push --force --quiet "https://${GH_TOKEN}@${GH_REF}" master:master

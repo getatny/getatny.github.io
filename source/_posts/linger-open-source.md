@@ -7,11 +7,11 @@ categories:
 ---
 > 我没有不惑，只求在回望中结果，谁为我们生造矛盾这么多？ ---- 《弥留》
 
-<!-- more -->
-
 ## 又一个音乐文字类微信小程序？
 
 距离我上一个小程序开源已经过去一年多了，10 Mississippi开源之后就几乎没有再维护过，一方面因为没能上线当时确实觉得写了这么久的小程序白费了，另一方面去年的那个时候我正面临着找实习+开始毕业论文的紧张时期，也确实没有太多时间去做维护了。之后有点时间之后也想过把10 Mississippi完善一下，可笑的是，太长时间没有管它，再想去完善有点找不到当时的逻辑了。（主要当时代码写的真的太乱了）
+
+<!-- more -->
 
 Anyway，最近看到一些小程序新的开源框架就有点手痒，思来想去决定开始动手。开发个什么类型的小程序呢？想来想去自己也就喜欢听听歌，偶尔看看鸡汤这点兴趣了。所以最后还是选择了音乐文字这一类别。~~（没有上线打算）~~ 这一次选择了[Tarojs]( https://taro-docs.jd.com/taro/docs/README.html ) 这个小程序框架，相比一年前，感觉开发起来也更轻松了，得益于小程序的日渐完善，以前的一些功能实现起来也更加容易了（也有可能是自己之前没仔细看文档）。前前后后从项目创建到有了雏形，差不多用了两个月时间（总工作时间可能就两三天吧，我实在太能拖了）。终于在昨天，开发完文章详细页面之后，小程序集齐了六张程序截图，所以我今天就迫不及待要把他“裱”在博客里！
 
@@ -32,7 +32,6 @@ Linger的意思是停留，但叫Linger不是我的本意。在写这个小程�
 <img src="https://s2.ax1x.com/2019/11/20/Mh80AK.md.png" width="30%" style="margin-right: 10px; border: 1px solid #000; float: left;" /><img src="https://s2.ax1x.com/2019/11/24/MXNoge.md.png" width="30%" style="margin-right: 10px; border: 1px solid #000; float: left;" /><img src="https://s2.ax1x.com/2019/11/17/MD7N59.md.png" width="30%" style="margin-right: 10px; border: 1px solid #000; float: left;" />
 
 <div style="clear: both;"></div>
-
 ## 怎么运行？
 
 克隆本项目：[https://github.com/getatny/linger](https://github.com/getatny/linger)，执行：
