@@ -1,0 +1,112 @@
+<!DOCTYPE html><html class="theme-next muse use-motion han-la" lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta name="theme-color" content="#222"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4"><link rel="mask-icon" href="/images/apple-touch-icon-next.png?v=5.1.4" color="#222"><meta name="keywords" content="Translate,CSS,"><meta name="description" content="英文原文：Centering in CSS: A Complete Guide如何使用CSS居中网页中的内容是CSS最典型的被抱怨的地方。为什么CSS居中这么难呢？我觉得，问题的本身不是它代码有多难写，而是有太多不同的方法可以做到居中，在这样的情况下，我们反而很难弄清楚选择哪种方法可以实现我们想要的效果。所以，今天就让我们来制作一个决策树，希望通过这样的方式能够使CSS居中这件事变得容易一些。"><meta name="keywords" content="Translate,CSS"><meta property="og:type" content="article"><meta property="og:title" content="翻译 | CSS居中：完全指南"><meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2018&#x2F;06&#x2F;22&#x2F;centering-css-complete-guide&#x2F;index.html"><meta property="og:site_name" content="Getatny"><meta property="og:description" content="英文原文：Centering in CSS: A Complete Guide如何使用CSS居中网页中的内容是CSS最典型的被抱怨的地方。为什么CSS居中这么难呢？我觉得，问题的本身不是它代码有多难写，而是有太多不同的方法可以做到居中，在这样的情况下，我们反而很难弄清楚选择哪种方法可以实现我们想要的效果。所以，今天就让我们来制作一个决策树，希望通过这样的方式能够使CSS居中这件事变得容易一些。"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;11&#x2F;16&#x2F;MBZxAJ.png"><meta property="og:updated_time" content="2019-12-03T05:43:55.668Z"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;11&#x2F;16&#x2F;MBZxAJ.png"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",version:"5.1.4",sidebar:{position:"left",display:"post",offset:12,b2t:!1,scrollpercent:!1,onmobile:!1},fancybox:!0,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},duoshuo:{userId:"0",author:"Author"},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}},emojis:{className:"github-emoji"}}</script><link rel="canonical" href="http://yoursite.com/2018/06/22/centering-css-complete-guide/"><link href="/highlight/night-eighties.min.css?v=5.1.4" rel="stylesheet" type="text/css"><style>html.han-la hanla:after{content:" ";display:inline;font-family:Arial;font-size:.89em}html.han-la code hanla,html.han-la kbd hanla,html.han-la pre hanla,html.han-la samp hanla{display:none}html.han-la ol>hanla,html.han-la ul>hanla{display:none}</style><title>翻译 | CSS居中：完全指南 | Getatny</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">Getatny</span> <span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">All the wind hold by my arms.</p></div><div class="site-nav-toggle"><button><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>Archives</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>About</a></li></ul></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/22/centering-css-complete-guide/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Matthew Wang"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.png"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="Getatny"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">翻译 | CSS居中：完全指南</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">Posted on</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-22T10:27:59+00:00">2018-06-22 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">In</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Front-end/" itemprop="url" rel="index"><span itemprop="name">Front-end</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><span itemprop="image" itemscope itemtype="http://schema.org/ImageObject"><img itemprop="url image" src="https://s2.ax1x.com/2019/11/16/MBZxAJ.png" class="full-image" alt="cover" title="翻译 | CSS居中：完全指南"><meta itemprop="width" content="auto"><meta itemprop="height" content="auto"></span><blockquote><p>英文原文：<a href="https://css-tricks.com/centering-css-complete-guide/" target="_blank" rel="noopener">Centering in CSS: A Complete Guide</a></p></blockquote><p>如何使用CSS居中网页中的内容是CSS最典型的被抱怨的地方。为什么CSS居中这么难呢？我觉得，问题的本身不是它代码有多难写，而是有太多不同的方法可以做到居中，在这样的情况下，我们反而很难弄清楚选择哪种方法可以实现我们想要的效果。</p><p>所以，今天就让我们来制作一个决策树，希望通过这样的方式能够使CSS居中这件事变得容易一些。</p><a id="more"></a><hr><h2 id="水平居中"><a href="#水平居中" class="headerlink" title="水平居中"></a>水平居中</h2><h3 id="居中inline或者inline-的元素？（比如text或links）"><a href="#居中inline或者inline-的元素？（比如text或links）" class="headerlink" title="居中inline或者inline-*的元素？（比如text或links）"></a>居中inline或者inline-*的元素？（比如text或links）</h3><p>你可以在一个块级元素中像这样水平居中行级元素：</p><pre><code class="css">.center-children {
+    text-align: center;
+}</code></pre><p>这种写法对于<code>inline</code>, <code>inline-block</code>, <code>inline-table</code>, <code>inline-flex</code>等都能生效。</p><h3 id="居中块级元素？"><a href="#居中块级元素？" class="headerlink" title="居中块级元素？"></a>居中块级元素？</h3><p>你可以通过给块级元素声明<code>margin-left</code>和<code>margin-right</code>属性，且值为<code>auto</code>（注意该元素需要设定宽度，否则他的宽度和父元素一样宽就没有居中这一说了）。通常我们通过这样的简便写法来实现：</p><pre><code class="css">.center-me {
+    margin: 0 auto;
+}</code></pre><p>这种写法无论块级元素及其父元素的宽度大小怎样都能实现居中。</p><p>注意：你不能通过<code>float</code>属性居中元素。</p><h3 id="多个块级元素居中？"><a href="#多个块级元素居中？" class="headerlink" title="多个块级元素居中？"></a>多个块级元素居中？</h3><p>如果你需要在一行里面水平居中两个甚至多个块级元素的话，你需要改变他们的<code>display</code>类型。下面分别是一个改变<code>display</code>类型为<code>inline-block</code>的例子和一个<code>flexbox</code>的例子：</p><figure><iframe src="//jsrun.net/UXgKp/embedded/all/dark/" width="100%" height="300" allowfullscreen></iframe></figure><p>除非你意思是你只是单纯想要把多个块级元素居中，且他们还是按照原本的顺序垂直排列下来。这种情况下值为auto的<code>margin</code>仍然可以生效：</p><figure><iframe src="//jsrun.net/9XgKp/embedded/all/dark/" width="100%" height="300" allowfullscreen></iframe></figure><hr><h2 id="垂直居中"><a href="#垂直居中" class="headerlink" title="垂直居中"></a>垂直居中</h2><p>CSS中实现垂直居中有一点点复杂</p><h3 id="居中inline或者inline-的元素？"><a href="#居中inline或者inline-的元素？" class="headerlink" title="居中inline或者inline-*的元素？"></a>居中inline或者inline-*的元素？</h3><h4 id="单独一行？"><a href="#单独一行？" class="headerlink" title="单独一行？"></a>单独一行？</h4><p>有时候<code>inline</code> / <code>text</code>元素可以简单通过给他一个上下相等的<code>padding</code>显示为垂直居中。</p><p>但是如果你打算居中一些你<strong>经确定不会换行</strong>的文字，且因为某些原因你没有办法使用<code>padding</code>的话，有一个小技巧：将<code>line-height</code>属性设置的和高度相等，就能实现这些文字的垂直居中。</p><pre><code class="css">.center-text-trick {
+    height: 100px;
+    line-height: 100px;
+    white-space: nowrap;
+}</code></pre><blockquote><p>注意：这里所谓的居中指的是在某一个元素中的居中，而不是相对于整个窗口的居中！</p></blockquote><h4 id="多行？"><a href="#多行？" class="headerlink" title="多行？"></a>多行？</h4><p>理论上说相等的上下<code>padding</code>也可以垂直居中多行文字，但是如果那样的做法没有效果的话，也许我们可以将该文本元素放在表单中，也可以是字面上或通过CSS使得该元素展示的像表单元素（display: table-cell）。在这种情况下，<code>vertical-align</code>属性不像通常解决元素在行中对齐那样解决该问题。</p><p>如果类似table的方法不能使用的话，也许你可以试试<code>flexbox</code>？flex类型的子元素可以很容易的在一个flex类型的父元素中居中。</p><pre><code class="css">.flex-center-vertically {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 400px;
+}</code></pre><p>记住这种写法只在父元素有固定的高度（px, % 等）时才有实质性的作用，这也是为什么我例子的代码中声明了400px的高度的原因。</p><p>如果上面写的两种方法你都不能使用，你可以采用百分百高度的假元素 – “伪类”去代替父元素容纳子元素的部分，然后文本元素相对于这个伪类垂直居中。<del>（译者表示自己都看不懂这种操作！）</del></p><pre><code class="css">.ghost-center {
+    position: relative;
+}
+
+.ghost-center:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 1%;
+    vertical-align: middle;
+}
+
+.ghost-center p {
+    display: inline-block;
+    vertical-align: middle;
+}</code></pre><h3 id="居中块级元素？-1"><a href="#居中块级元素？-1" class="headerlink" title="居中块级元素？"></a>居中块级元素？</h3><h4 id="你知道该元素的高度？"><a href="#你知道该元素的高度？" class="headerlink" title="你知道该元素的高度？"></a>你知道该元素的高度？</h4><p>不知道网页布局的高度是很常见的，原因很多：</p><ol><li>如果<code>width</code>改变，文本重排会改变元素高度；</li><li>CSS对文本的样式的改变会改变元素高度；</li><li>文本数量的改变会改变元素高度；</li><li>有着固定宽高比的元素，比如：<code>image</code>重置大小时会改变元素高度；</li><li>… …</li></ol><p>但是如果你确实知道元素的高度的话，你可以像这样垂直居中：</p><pre><code class="css">.parent {
+    position: relative;
+}
+
+.child {
+    position: absolute;
+    top: 50%;
+    height: 100px;
+    margin-top: -50%; /*如果没有使用box-sizing: border-box的话，还需要加上padding和border高度*/
+}</code></pre><h4 id="不知道元素高度？"><a href="#不知道元素高度？" class="headerlink" title="不知道元素高度？"></a>不知道元素高度？</h4><p>上面那种通过在将子元素下移父元素50%再向上移动子元素自身高度一半的方法在这种情况下仍然可以使用：</p><pre><code class="css">.parent {
+    position: relative;
+}
+
+.child {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}</code></pre><blockquote><p>译者按：transform是CSS3中新增的属性，它的作用其实是用来进行图像2D、3D转换（旋转、缩放、移动和倾斜），这里我们通过translateY来对该元素进行Y轴方向的移动，移动的值为自身Y轴方向数值（即高）的一半。</p></blockquote><h4 id="你可以使用flexbox吗？"><a href="#你可以使用flexbox吗？" class="headerlink" title="你可以使用flexbox吗？"></a>你可以使用flexbox吗？</h4><p>通过使用flexbox可以超级轻松的实现垂直居中：</p><pre><code class="css">.parent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}</code></pre><hr><h2 id="垂直方向水平方向都要居中？"><a href="#垂直方向水平方向都要居中？" class="headerlink" title="垂直方向水平方向都要居中？"></a>垂直方向水平方向都要居中？</h2><p>你可以组合以上所说的任何技术来完美的实现两个方向的居中。但是我发现通常来说，使用的都是以下几种方法：</p><h3 id="该元素是否拥有固定的宽和高？"><a href="#该元素是否拥有固定的宽和高？" class="headerlink" title="该元素是否拥有固定的宽和高？"></a>该元素是否拥有固定的宽和高？</h3><p>在你将其设置为top: 50%, left: 50%的绝对位置后将<code>margin</code>设置为该元素宽高的负值会实现一个跨浏览器支持较好的居中效果：</p><pre><code class="css">.parent {
+    position: relative;
+}
+
+.child {
+    width: 300px;
+    height: 100px;
+    padding: 20px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    margin: -70px 0 0 -170px;
+}</code></pre><h3 id="该元素宽高未知？"><a href="#该元素宽高未知？" class="headerlink" title="该元素宽高未知？"></a>该元素宽高未知？</h3><p>如果你不知道元素的宽高，你可以使用transform属性和两个方向上-50%的translate来实现居中（基于当前元素的宽高来居中）：</p><pre><code class="css">.parent {
+  position: relative;
+}
+
+.child {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}</code></pre><h3 id="可以使用flex布局吗？"><a href="#可以使用flex布局吗？" class="headerlink" title="可以使用flex布局吗？"></a>可以使用flex布局吗？</h3><p>使用flex布局实现两个方向上的居中，你需要使用下面两个居中属性：</p><pre><code class="css">.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}</code></pre><h3 id="可以使用grid吗？"><a href="#可以使用grid吗？" class="headerlink" title="可以使用grid吗？"></a>可以使用grid吗？</h3><p>这是单个元素两个方向上居中的小技巧（由Lance Janssen提供）：</p><pre><code class="css">body, html {
+  height: 100%;
+  display: grid;
+}
+
+span { /* 这里是你要居中的元素 */
+  margin: auto;
+}</code></pre><hr><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Emmm，作者写了这么多，译者翻译这么久，所以你知道在各种情况下怎么实现居中了吗？</p><script>document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });</script></div><footer class="post-footer"><div class="post-tags"><a href="/tags/Translate/" rel="tag"># Translate</a> <a href="/tags/CSS/" rel="tag"># CSS</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2018/06/18/10-mississippi-open-source/" rel="next" title="10 Mississippi - 音乐文字类小程序开源"><i class="fa fa-chevron-left"></i> 10 Mississippi - 音乐文字类小程序开源</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/2019/10/31/use-github-page-and-travis-to-build-your-blog/" rel="prev" title="使用Github page + Travis构建你的个人博客">使用Github page + Travis构建你的个人博客 <i class="fa fa-chevron-right"></i></a></div></div></footer></div></article><div class="post-spread"></div></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span> <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span> <span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">Table of Contents</li><li class="sidebar-nav-overview" data-target="site-overview-wrap">Overview</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Matthew Wang"><p class="site-author-name" itemprop="name">Matthew Wang</p><p class="site-description motion-element" itemprop="description"></p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href="/archives/%7C%7C%20archive"><span class="site-state-item-count">5</span> <span class="site-state-item-name">posts</span></a></div><div class="site-state-item site-state-categories"><a href="/categories/index.html"><span class="site-state-item-count">3</span> <span class="site-state-item-name">categories</span></a></div><div class="site-state-item site-state-tags"><span class="site-state-item-count">8</span> <span class="site-state-item-name">tags</span></div></nav><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/getatny" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a> </span><span class="links-of-author-item"><a href="mailto:wangmaozhu@foxmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a></span></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#水平居中"><span class="nav-number">1.</span> <span class="nav-text">水平居中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#居中inline或者inline-的元素？（比如text或links）"><span class="nav-number">1.1.</span> <span class="nav-text">居中inline或者inline-*的元素？（比如text或links）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#居中块级元素？"><span class="nav-number">1.2.</span> <span class="nav-text">居中块级元素？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多个块级元素居中？"><span class="nav-number">1.3.</span> <span class="nav-text">多个块级元素居中？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垂直居中"><span class="nav-number">2.</span> <span class="nav-text">垂直居中</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#居中inline或者inline-的元素？"><span class="nav-number">2.1.</span> <span class="nav-text">居中inline或者inline-*的元素？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单独一行？"><span class="nav-number">2.1.1.</span> <span class="nav-text">单独一行？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多行？"><span class="nav-number">2.1.2.</span> <span class="nav-text">多行？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#居中块级元素？-1"><span class="nav-number">2.2.</span> <span class="nav-text">居中块级元素？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#你知道该元素的高度？"><span class="nav-number">2.2.1.</span> <span class="nav-text">你知道该元素的高度？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不知道元素高度？"><span class="nav-number">2.2.2.</span> <span class="nav-text">不知道元素高度？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#你可以使用flexbox吗？"><span class="nav-number">2.2.3.</span> <span class="nav-text">你可以使用flexbox吗？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垂直方向水平方向都要居中？"><span class="nav-number">3.</span> <span class="nav-text">垂直方向水平方向都要居中？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#该元素是否拥有固定的宽和高？"><span class="nav-number">3.1.</span> <span class="nav-text">该元素是否拥有固定的宽和高？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#该元素宽高未知？"><span class="nav-number">3.2.</span> <span class="nav-text">该元素宽高未知？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可以使用flex布局吗？"><span class="nav-number">3.3.</span> <span class="nav-text">可以使用flex布局吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可以使用grid吗？"><span class="nav-number">3.4.</span> <span class="nav-text">可以使用grid吗？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2019</span> <span class="with-love"><i class="fa fa-user"></i> </span><span class="author" itemprop="copyrightHolder">Matthew Wang</span></div><div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div><span class="post-meta-divider">|</span><div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script><script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script><script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/text-autospace.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script><script type="text/javascript" src="/highlight/pretty.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"><script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script><script type="text/javascript">const gitalk = new Gitalk({
+        clientID: 'c8eccabe6a600b6cd5a7',
+        clientSecret: '8760b3aa99494e4a89603a85f92d866c733a79a1',
+        repo: 'getatny.github.io',
+        owner: 'getatny',
+        admin: ['getatny'],
+        id: location.pathname.split('/')[4],
+        distractionFreeMode: true,
+        labels: ['Blog Comments'],
+        createIssueManually: true
+      })
+
+      gitalk.render('gitalk-container')</script></body></html>

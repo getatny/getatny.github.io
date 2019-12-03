@@ -1,0 +1,224 @@
+<!DOCTYPE html><html class="theme-next muse use-motion han-la" lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><meta name="theme-color" content="#222"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.ico?v=5.1.4"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.ico?v=5.1.4"><link rel="mask-icon" href="/images/apple-touch-icon-next.png?v=5.1.4" color="#222"><meta name="keywords" content="Translate,React,Javascript,"><meta name="description" content="英文原文：Algebraic Effects for the Rest of Us你之前听过说“代数效应”（Algebraic Effects）吗？我之前曾尝试着去搞清楚什么是代数效应以及我们为什么需要关注它，但是失败了。我找到了一些pdf，但是这些东反而让我更迷惑了。（有一些学校的pdf看的我想睡觉）但是我的同事 Sebastian 一直推荐把它作为在开发React时的心智模型。（Sebasti"><meta name="keywords" content="Translate,React,Javascript"><meta property="og:type" content="article"><meta property="og:title" content="翻译 | 代数效应（Algebraic Effects）"><meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;20&#x2F;algebraic-effects-for-the-rest-of-us&#x2F;index.html"><meta property="og:site_name" content="Getatny"><meta property="og:description" content="英文原文：Algebraic Effects for the Rest of Us你之前听过说“代数效应”（Algebraic Effects）吗？我之前曾尝试着去搞清楚什么是代数效应以及我们为什么需要关注它，但是失败了。我找到了一些pdf，但是这些东反而让我更迷惑了。（有一些学校的pdf看的我想睡觉）但是我的同事 Sebastian 一直推荐把它作为在开发React时的心智模型。（Sebasti"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;11&#x2F;20&#x2F;MWSbVO.jpg"><meta property="og:updated_time" content="2019-12-03T05:43:55.668Z"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https:&#x2F;&#x2F;s2.ax1x.com&#x2F;2019&#x2F;11&#x2F;20&#x2F;MWSbVO.jpg"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",version:"5.1.4",sidebar:{position:"left",display:"post",offset:12,b2t:!1,scrollpercent:!1,onmobile:!1},fancybox:!0,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},duoshuo:{userId:"0",author:"Author"},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}},emojis:{className:"github-emoji"}}</script><link rel="canonical" href="http://yoursite.com/2019/11/20/algebraic-effects-for-the-rest-of-us/"><link href="/highlight/night-eighties.min.css?v=5.1.4" rel="stylesheet" type="text/css"><style>html.han-la hanla:after{content:" ";display:inline;font-family:Arial;font-size:.89em}html.han-la code hanla,html.han-la kbd hanla,html.han-la pre hanla,html.han-la samp hanla{display:none}html.han-la ol>hanla,html.han-la ul>hanla{display:none}</style><title>翻译 | 代数效应（Algebraic Effects） | Getatny</title></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">Getatny</span> <span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">All the wind hold by my arms.</p></div><div class="site-nav-toggle"><button><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>Home</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>Archives</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>About</a></li></ul></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/20/algebraic-effects-for-the-rest-of-us/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Matthew Wang"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.png"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="Getatny"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">翻译 | 代数效应（Algebraic Effects）</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">Posted on</span> <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-20T09:44:23+00:00">2019-11-20 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">In</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Front-end/" itemprop="url" rel="index"><span itemprop="name">Front-end</span></a></span></span></div></header><div class="post-body" itemprop="articleBody"><blockquote><p>英文原文：<a href="https://https://overreacted.io/algebraic-effects-for-the-rest-of-us/" target="_blank" rel="noopener">Algebraic Effects for the Rest of Us</a></p></blockquote><p>你之前听过说“代数效应”（Algebraic Effects）吗？</p><p>我之前曾尝试着去搞清楚什么是代数效应以及我们为什么需要关注它，但是失败了。我找到了一些<a href="https://www.microsoft.com/en-us/research/wp-content/uploads/2016/08/algeff-tr-2016-v2.pdf" target="_blank" rel="noopener">pdf</a>，但是这些东反而让我更迷惑了。（有一些学校的pdf看的我想睡觉）</p><p>但是我的同事 Sebastian 一直推荐把它作为在开发React时的心智模型。（Sebastian在React团队工作并且想出了很多ideas，包括Hooks和Suspense）从某些点来说，它已经变成了React团队内的一个梗，我们很多的对话都会以下图结束：</p><a id="more"></a><div align="center"><p><img src="https://s2.ax1x.com/2019/11/20/MWSbVO.jpg" alt="running joke"></p></div><p>结果是代数效应并不像我一开始看到那些pdf的时候以为那么吓人，反而是一个很酷的概念。<strong>如果你只是单纯使用React的话，其实不需要了解它 —- 但如果你像我一样对它很好奇的话，请继续往下读。</strong></p><h2 id="生产环境还不能使用哦"><a href="#生产环境还不能使用哦" class="headerlink" title="生产环境还不能使用哦"></a>生产环境还不能使用哦</h2><p>代数效应是一个理论性的功能。这意味着它不像 <code>if</code> ，函数，甚至 <code>async / await</code> 那样，<strong>你可能不能在生产环境真正使用它。</strong>它只被少数为了探索该想法而创建的<a href="https://www.microsoft.com/en-us/research/project/koka/" target="_blank" rel="noopener">语言</a>所支持。OCaml在使其能在生产环境中使用有所进展，但也只是“<a href="https://github.com/ocaml-multicore/ocaml-multicore/wiki" target="_blank" rel="noopener">仍在进行中…</a>”。换句话说就是<a href="https://www.youtube.com/watch?v=otCpCn0l4Wo" target="_blank" rel="noopener">你不能用呗</a>。</p><blockquote><p>笔者：有些人提到LISP语言提供了一些<a href="https://overreacted.io/algebraic-effects-for-the-rest-of-us/#learn-more" target="_blank" rel="noopener">类似的特性</a>，所以如果你在使用LISP的话，你可以将其用在生产环境上。</p></blockquote><h2 id="我为什么要关注代数效应？"><a href="#我为什么要关注代数效应？" class="headerlink" title="我为什么要关注代数效应？"></a>我为什么要关注代数效应？</h2><p>想象你现在正在使用 <code>goto</code> 关键字编写程序，然后某个人向你展示了 <code>if</code> 和 <code>for</code> 语句。或者可能你正在回调地狱中无法自拔，某个人却突然告诉你有 <code>async / await</code>！很酷对吧？</p><p>如果你是那种喜欢在某种编程想法成为主流的前几年就开始学习它的人，现在可能就是你对代数效应开好奇的最好时机。但也不用觉得你非得学不可。它其实有点像在1999年去思考 <code>async / await</code>。</p><h2 id="那什么是代数效应（Algebraic-Effects）呢？"><a href="#那什么是代数效应（Algebraic-Effects）呢？" class="headerlink" title="那什么是代数效应（Algebraic Effects）呢？"></a>那什么是代数效应（Algebraic Effects）呢？</h2><p>光看名字可能有一点吓人，但其实它的思想挺简单的。如果你对 <code>try / catch</code> 块很熟悉的话，你会很快搞清楚代数效应的。</p><p>首先让我们概括下 <code>try / catch</code>。假设你有一个函数抛出了异常。可能在该函数和 <code>catch</code> 块之间还有一些函数：</p><pre><code class="javascript">function getName(user) {
+  let name = user.name;
+  if (name === null) {
+      throw new Error('A girl has no name');
+  }
+  return name;
+}
+
+function makeFriends(user1, user2) {
+  user1.friendNames.add(getName(user2));
+  user2.friendNames.add(getName(user1));
+}
+
+const arya = { name: null };
+const gendry = { name: 'Gendry' };
+try {
+  makeFriends(arya, gendry);
+} catch (err) {
+  console.log("Oops, that didn't work out: ", err);
+}</code></pre><p>我们在 <code>getName</code> 里面抛出异常，但是该异常通过 <code>makeFriends</code> “冒泡”被最近的 <code>catch</code> 块捕获，这是 <code>try / catch</code> 的一个重要作用。<strong>在中间的部分不需要自己去考虑怎么处理error。</strong></p><p>不像C语言中处理error的代码，通过 <code>try / catch</code>，你不需要因为害怕丢失error而在每一个中间层手动的传递它们。他们自己会自动地进行传递。</p><h2 id="这与代数效应有什么关系？"><a href="#这与代数效应有什么关系？" class="headerlink" title="这与代数效应有什么关系？"></a>这与代数效应有什么关系？</h2><p>上面的例子中，一旦出现错误，程序将不再继续执行。当 <code>catch</code> 块中的代码执行完之后，没有任何办法能让我们继续执行处处出错时的代码。</p><p>我们能做的就是从错误中恢复过来并使用某种方法重试我们之前想要做的，却不能魔法般地“回到”我们发生错误的时刻去做一些和之前不同的事儿。但是有了代数效应，We can！</p><p>下面时一个用假设的javascript伪代码编写的例子（让我们娱乐性的将其称为ES2025的语法），该语法让我们可以从丢失 <code>user.name</code> 的时刻恢复：</p><pre><code class="js">function getName(user) {
+  let name = user.name;
+  if (name === null) {
+      name = perform 'ask_name'; // important
+  }
+  return name;
+}
+
+function makeFriends(user1, user2) {
+  user1.friendNames.add(getName(user2));
+  user2.friendNames.add(getName(user1));
+}
+
+const arya = { name: null };
+const gendry = { name: 'Gendry' };
+try {
+  makeFriends(arya, gendry);
+} handle (effect) {
+  if (effect === 'ask_name') { // important
+      resume with 'Arya Stark'; // important
+  }
+}</code></pre><p>（我向所有在2025年通过搜索“ES2025”关键字找到这篇文章的读者道歉，如果代数效应到时候已经称为JavaScript的一部分，我将很乐意去更新该文章！）</p><p>我们使用了一个假设的关键字 <code>perform</code> 去替代 <code>throw</code>，类似的，使用假设的 <code>try / handle</code> 替代 <code>try / catch</code> 。<strong>该语法的准确写法在这里并不重要 —- 我只是想通过某些东西去解释代数效应的思想。</strong></p><p>所以会发生什么呢？让我们仔细看一下。</p><p>我们 <code>perform</code> 了一个效应（effect）而不是抛出一个错误（error）。就像我们可以抛出任何值一样，我们也可以传递任何值给 <code>perform</code>。在这个例子中，我传递是一个字符串，但你完全可以传递一个对象或任何其他的数据类型：</p><pre><code class="js">function getName(user) {
+  let name = user.name;
+  if (name === null) {
+      name = perform 'ask_name'; // important
+  }
+  return name;
+}</code></pre><p>当我们抛出一个错误的时候，引擎会通过调用栈去查找最近的一个 <code>try / catch</code> 异常处理块。我们 <code>perform</code> 一个效应的时候也是一样，引擎将会在调用栈中搜索最近的 <code>try / handle</code> 效应处理块：</p><pre><code class="js">try {
+  makeFriends(arya, gendry);
+} handle (effect) { // important
+  if (effect === 'ask_name') {
+      resume with 'Arya Stark';
+  }
+}</code></pre><p>这个 <code>effect</code> 可以让我们自己决定怎么去处理姓名丢失的情况，有趣的地方在于假定的 <code>resume with</code>（相较于异常来说）：</p><pre><code class="js">try {
+  makeFriends(arya, gendry);
+} handle (effect) {
+  if (effect === 'ask_name') {
+      resume with 'Arya Stark'; // important
+  }
+}</code></pre><p>这是 <code>try / catch</code> 所做不到的。它使我们<strong>跳回我们perform效应的时刻，并从handler传递一些内容给它。</strong> <span class="github-emoji" style="color:transparent;background:no-repeat url(https://github.githubassets.com/images/icons/emoji/unicode/1f62f.png?v8) center/contain" data-src="https://github.githubassets.com/images/icons/emoji/unicode/1f62f.png?v8">😯</span></p><pre><code class="js">function getName(user) {
+  let name = user.name;
+  if (name === null) {
+      // 1. 我们在这儿perform了一个效应
+      name = perform 'ask_name';
+      // 4. ...handler代码执行结束之后会回到这儿，现在 name 的值为'Arya Stark'
+  }
+  return name;
+}
+
+// ...
+
+try {
+  makeFriends(arya, gendry);
+} handle (effect) {
+  // 2. 通过引擎找到最近的 try / handle，我们将跳到这里（就像 try / catch 的逻辑一样）
+  if (effect === 'ask_name') {
+      // 3. 和 try / catch 不同的是，我们可以通过resume恢复，并向其传递一些值
+      resume with 'Arya Stark';
+  }
+}</code></pre><p>需要一点时间去适应这些变化，但从概念上来讲它和可恢复的 <code>try / catch</code> 真的没多大的区别。</p><p>需要注意的是，<strong>代数效应比 try / catch 要灵活太多了，并且“错误恢复”只是它众多可能的使用场景中的一个。</strong>我以“错误恢复”为例只是因为我觉得它比较容易囊括我关于它想要描述的东西。</p><h2 id="函数没有“颜色”"><a href="#函数没有“颜色”" class="headerlink" title="函数没有“颜色”"></a>函数没有“颜色”</h2><p>代数效应对于异步代码来说有着有趣的含义。</p><p>对于拥有 <code>async / await</code> 语法的编程语言来说，<a href="https://journal.stuffwithstuff.com/2015/02/01/what-color-is-your-function/" target="_blank" rel="noopener">函数通常有“颜色”</a>。举个栗子，在JavaScript中，我们无法在不感染 <code>makeFriends</code> 函数及其调用者，使其成为异步函数的情况下将 <code>getName</code> 函数修改为异步函数。这在某些代码需要同步，而另一些代码需要异步的时候真的很痛苦。</p><pre><code class="js">// 如果你想把该函数改为异步函数的话
+async getName(user) {
+  // ...
+}
+
+// 这个函数也得修改为异步函数
+async function makeFriends(user1, user2) {
+  user1.friendNames.add(await getName(user2));
+  user2.friendNames.add(await getName(user1));
+}
+
+// makeFriends 函数的调用者也是如此</code></pre><p>JavaScript generators也是<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*" target="_blank" rel="noopener">类似</a>的：如果你使用了generators，那么中间相关的东西也需要注意generators。</p><p>那么，这又和代数效应有什么关系呢？</p><p>让我们忘掉 <code>async / await</code> 回到我们的例子中：</p><pre><code class="js">function getName(user) {
+  let name = user.name;
+  if (name === null) {
+      name = perform 'ask_name'; // important
+  }
+  return name;
+}
+
+function makeFriends(user1, user2) {
+  user1.friendNames.add(getName(user2));
+  user2.friendNames.add(getName(user1));
+}
+
+const arya = { name: null };
+const gendry = { name: 'Gendry' };
+try {
+  makeFriends(arya, gendry);
+} handle (effect) {
+  if (effect === 'ask_name') { // important
+      resume with 'Arya Stark'; // important
+  }
+}</code></pre><p>如果effect handler不能同步地知道“备用姓名”怎么办？如果我们想要从某个数据库中获取姓名呢？</p><p>结果是，我们可以在effect handler中异步地调用 <code>resume with</code> 并且不需要对 <code>getName</code> 或 <code>nakeFriends</code> 函数做任何的改动：</p><pre><code class="js">function getName(user) {
+  let name = user.name;
+  if (name === null) {
+      name = perform 'ask_name';
+  }
+  return name;
+}
+
+function makeFriends(user1, user2) {
+  user1.friendNames.add(getName(user2));
+  user2.friendNames.add(getName(user1));
+}
+
+const arya = { name: null };
+const gendry = { name: 'Gendry' };
+try {
+  makeFriends(arya, gendry);
+} handle (effect) {
+  if (effect === 'ask_name') { // important
+      setTimeout(() =&gt; { // important
+      resume with 'Arya Stark'; // important
+      }, 1000); // important
+  }
+}</code></pre><p>在这个例子中，我们在一秒钟之后才调用 <code>resume with</code>。你可以把 <code>resume with</code> 想象成值调用一次的回调函数。（你也可以将其称作“one-shot delimited continuation”给你的朋友留下深刻印象。<del>翻译无能</del>）</p><p>现在，代数效应的工作原理应该更清晰一些了。当我们抛出一个错误的时候，JavaScript引擎会“释放栈”，从进程中销毁本地变量。而当我们 <code>perfofm</code> 一个效应的时候，我们假定的引擎将会创建一个包含我们余下函数的回调，并通过 <code>resume with</code> 调用它。</p><p><strong>再次强调一下：本文中使用的任何关于代数效应的语法和关键字都是虚构的，它们并不是关键点，关键点在于代数效应的思想及工作原理。</strong></p><h2 id="关于“纯”"><a href="#关于“纯”" class="headerlink" title="关于“纯”"></a>关于“纯”</h2><p>值得注意的是，代数效应概念来自于函数式编程研究，所以它解决的某些问题是特定于纯函数编程的。举个栗子，在不允许任何副作用的编程语言中（如Haskell），你需要通过使用像Monads一类的额概念来编写函数，如果你以前阅读过Monads的教程的话，你应该知道它的概念是有一点难理解的。而代数效应能在较少的代价下实现类似的东西。</p><p>这也正是很多关于代数效应的讨论对我来说难以理解的原因。（我<a href="https://overreacted.io/things-i-dont-know-as-of-2018/" target="_blank" rel="noopener">不了解</a>Haskell和朋友<del>（？）</del>）但不管怎么说，我还是觉得即便是在像JavaScript这样不那么“纯”的编程语言中，<strong>代数效应也是在代码中分类内容和方法的强大工具。</strong></p><p>它使得你能够更专注于你正在做的事情：</p><pre><code class="js">function enumerateFiles(dir) {
+  const contents = perform OpenDirectory(dir); // important
+  perform Log('Enumerating files in ', dir); // important
+  for (let file of contents.files) {
+      perform HandleFile(file); // important
+  }
+  perform Log('Enumerating subdirectories in ', dir); // important
+  for (let directory of contents.dir) {
+      // 我们可以使用递归或其他带有效应的函数
+      enumerateFiles(directory);
+  }
+  perform Log('Done'); // important
+}</code></pre><p>然后再用具体怎么去处理的方法包裹它：</p><pre><code class="js">let files = [];
+try {
+  enumerateFiles('C:\\');
+} handle (effect) {
+  if (effect instanceof Log) {
+      myLoggingLibrary.log(effect.message); // important
+      resume; // // important
+  } else if (effect instanceof OpenDirectory) {
+      myFileSystemImpl.openDir(effect.dirName, (contents) =&gt; { // important
+      resume with contents; // important
+      }); // important
+  } else if (effect instanceof HandleFile) {
+    files.push(effect.fileName); // important
+    resume; // important
+  }
+}
+// 'files' 数组现在包含了所有的文件</code></pre><p>这意味着这些处理片段甚至可以类库化：</p><pre><code class="js">import { withMyLoggingLibrary } from 'my-log';
+import { withMyFileSystem } from 'my-fs';
+
+function ourProgram() {
+  enumerateFiles('C:\\');
+}
+
+withMyLoggingLibrary(() =&gt; {
+  withMyFileSystem(() =&gt; {
+    ourProgram();
+  });
+});</code></pre><p>和 <code>async / await</code> 或 Generators 不太一样的是，代数效应并不需要复杂的“中间”函数。我们可以在 <code>onProgram</code> 函数的任何层级调用我们定义的 <code>enumerateFiles</code> 函数，只要在上层任意地方有一个effect handler，那么每一个effect就都会被perform，我们的代码就可以正常运作。</p><p>Effect handler让程序逻辑在不花费太多代价或编写样板代码的情况下与它实际的effect实现解耦。比如，我们可以在测试中使用虚拟的文件系统去完全重写保留log的行为，而不是仅仅把它们打印到控制台。</p><pre><code class="js">import { withFakeFileSystem } from 'fake-fs';
+
+function withLogSnapshot(fn) {
+  let logs = [];
+  try {
+      fn();
+  } handle (effect) {
+      if (effect instanceof Log) {
+        logs.push(effect.message);
+        resume;
+      }
+  }
+  // Snapshot emitted logs.
+  expect(logs).toMatchSnapshot();
+}
+
+test('my program', () =&gt; {
+  const fakeFiles = [/* ... */];
+  withFakeFileSystem(fakeFiles, () =&gt; { // important
+      withLogSnapshot(() =&gt; { // important
+      ourProgram(); // important
+      }); // important
+  }); // important
+});</code></pre><p>因为这里没有任何的“函数标志”（中间的代码不需要在意effects）并且effect handler是可组合的（你可以嵌套他们），所以你可以用它们来创建极具表现力的抽象函数。</p><h2 id="关于类型"><a href="#关于类型" class="headerlink" title="关于类型"></a>关于类型</h2><p>因为代数效应源自于静态类型语言，所以关于它的很多争论都围绕着它在类型中的表达方式。这肯定是毫无疑问的，但同时也使得掌握它的概念成为了一种挑战。也正是由于这个原因，所以这篇文章完全没有提到类型。但是！我需要提醒你的是，事实上一个可以执行效果的函数都会被编码成它的类型签名。因此你不应该陷入effects随机发生并且你无法确定它从哪儿出现的情况。<del>（不懂）</del></p><p>你可能会争论说代数效应技术上来说在静态类型语言中是给函数打上“标记”了的，因为effect正式类型签名的一部分！这样的说法是正确的，但是修复中间函数的类型注释以包括新的效果本身并不是语义上的更改 —- 与添加 <code>async</code> 或将一个函数转换为 <code>generator</code> 不同。结论也可以帮助避免级联更改。一个重要的区别是，你可以通过提供一个noop或一个虚拟的实现去“增强”effect（例如同步的去调用一个异步函数），这使你可以在必要时阻止其到达外部代码，或将其转换为不同的effect。</p><blockquote><p>未完待续</p></blockquote><script>document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });</script></div><footer class="post-footer"><div class="post-tags"><a href="/tags/Translate/" rel="tag"># Translate</a> <a href="/tags/React/" rel="tag"># React</a> <a href="/tags/Javascript/" rel="tag"># Javascript</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/2019/10/31/use-github-page-and-travis-to-build-your-blog/" rel="next" title="使用Github page + Travis构建你的个人博客"><i class="fa fa-chevron-left"></i> 使用Github page + Travis构建你的个人博客</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/2019/11/25/linger-open-source/" rel="prev" title="Linger - 又一个音乐文字类微信小程序">Linger - 又一个音乐文字类微信小程序 <i class="fa fa-chevron-right"></i></a></div></div></footer></div></article><div class="post-spread"></div></div></div><div class="comments" id="comments"><div id="gitalk-container"></div></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span> <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span> <span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">Table of Contents</li><li class="sidebar-nav-overview" data-target="site-overview-wrap">Overview</li></ul><section class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="Matthew Wang"><p class="site-author-name" itemprop="name">Matthew Wang</p><p class="site-description motion-element" itemprop="description"></p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href="/archives/%7C%7C%20archive"><span class="site-state-item-count">5</span> <span class="site-state-item-name">posts</span></a></div><div class="site-state-item site-state-categories"><a href="/categories/index.html"><span class="site-state-item-count">3</span> <span class="site-state-item-name">categories</span></a></div><div class="site-state-item site-state-tags"><span class="site-state-item-count">8</span> <span class="site-state-item-name">tags</span></div></nav><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/getatny" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a> </span><span class="links-of-author-item"><a href="mailto:wangmaozhu@foxmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a></span></div></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#生产环境还不能使用哦"><span class="nav-number">1.</span> <span class="nav-text">生产环境还不能使用哦</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#我为什么要关注代数效应？"><span class="nav-number">2.</span> <span class="nav-text">我为什么要关注代数效应？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#那什么是代数效应（Algebraic-Effects）呢？"><span class="nav-number">3.</span> <span class="nav-text">那什么是代数效应（Algebraic Effects）呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#这与代数效应有什么关系？"><span class="nav-number">4.</span> <span class="nav-text">这与代数效应有什么关系？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数没有“颜色”"><span class="nav-number">5.</span> <span class="nav-text">函数没有“颜色”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于“纯”"><span class="nav-number">6.</span> <span class="nav-text">关于“纯”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于类型"><span class="nav-number">7.</span> <span class="nav-text">关于类型</span></a></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; <span itemprop="copyrightYear">2019</span> <span class="with-love"><i class="fa fa-user"></i> </span><span class="author" itemprop="copyrightHolder">Matthew Wang</span></div><div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div><span class="post-meta-divider">|</span><div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script><script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script><script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/text-autospace.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script><script type="text/javascript" src="/highlight/pretty.js?v=5.1.4"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"><script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script><script type="text/javascript">const gitalk = new Gitalk({
+        clientID: 'c8eccabe6a600b6cd5a7',
+        clientSecret: '8760b3aa99494e4a89603a85f92d866c733a79a1',
+        repo: 'getatny.github.io',
+        owner: 'getatny',
+        admin: ['getatny'],
+        id: location.pathname.split('/')[4],
+        distractionFreeMode: true,
+        labels: ['Blog Comments'],
+        createIssueManually: true
+      })
+
+      gitalk.render('gitalk-container')</script></body></html>
